@@ -4,7 +4,7 @@ extends Area2D
 @export var speed_hide: float = 2.0
 @export var speed_wait: float = 3.0
 
-@export var mole_type: Globals.Mole_Types = Globals.Mole_Types.STANDARD
+@export var mole_type: Globals.MoleType = Globals.MoleType.STANDARD
 
 @export var play_hit: bool = false
 

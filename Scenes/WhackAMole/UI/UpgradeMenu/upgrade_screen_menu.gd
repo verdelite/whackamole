@@ -12,7 +12,12 @@ func _ready():
 		var new_upgrade = template_upgrade.instantiate()
 		control_node.add_child(new_upgrade)
 		spawned_upgrades.append(new_upgrade)
+	
+	Globals.level_up.connect(show_menu)
+	print("Upgrade screen ready and connected!")
 
+func show_menu(new_level: int):
+	print("Signal caught for level: " +str(new_level))
 	await get_tree().create_timer(0.5).timeout
 	animation_player.play("open_upgrade_screen")
 
@@ -21,3 +26,4 @@ func show_upgrades():
 		print(str(upgrade))
 		upgrade.open_upgrade_container()
 		await get_tree().create_timer(0.2).timeout
+		

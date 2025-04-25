@@ -24,6 +24,7 @@ radius = 67.0
 [node name="Hole" type="Area2D"]
 script = ExtResource("1_ygiob")
 mole_types = Array[PackedScene]([ExtResource("2_ieh3g"), ExtResource("3_lmwce"), ExtResource("4_bgu30")])
+mole_weights = [5.0, 1.0, 1.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jsnf7")

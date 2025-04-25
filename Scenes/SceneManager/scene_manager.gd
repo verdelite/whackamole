@@ -1,4 +1,5 @@
 extends Node2D
+#### This class serves as a signal bus
 
 var whack_a_mole: Node2D
 var ui_whack: Control

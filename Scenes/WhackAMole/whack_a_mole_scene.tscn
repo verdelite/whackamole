@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtxrh0nh2hdov" path="res://Scenes/WhackAMole/Ally/ally_rhiana.tscn" id="5_hero5"]
 
 [node name="WhackAMole" type="Node2D" node_paths=PackedStringArray("character")]
+process_mode = 1
 script = ExtResource("1_fwkvb")
 character = NodePath("Character")
 

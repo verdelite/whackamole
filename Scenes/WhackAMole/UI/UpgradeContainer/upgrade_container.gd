@@ -9,6 +9,8 @@ var HIGHLIGHT_COLOR: Color = Color(1.0, 0.37, 0.811, 0.529)
 
 @export var tween_stylebox: StyleBoxFlat
 
+@export var upgrade_type: Globals.UpgradeType = Globals.UpgradeType.RHIANA_1
+
 @export var upgrade_title: String = "Upgrade Name"
 @export var upgrade_image: Texture2D
 @export var upgrade_flavor: String = "Das wohl!"
@@ -33,12 +35,17 @@ func _ready():
 	%UpgradeFlavorText.text = upgrade_flavor
 	%UpgradeDescription.text = '[font_size=21][center][color="lightsalmon"]' + upgrade_description + '[/color][/center][/font_size]'
 
+	Globals.all_upgrades.append(upgrade_type)
+	Globals.new_upgrade.connect(close_upgrade_container)
+
 	initialize_container()
 	
 
 func _on_mouse_entered():
+	if position != ORIGINAL_POSITION:
+		return
 	_hovered = true
-	var tween = get_tree().create_tween()
+	var tween = Globals.new_tween()
 	tween.tween_property(self, "scale", SCALE_FACTOR, SCALE_DURATION)
 	tween.tween_property(tween_stylebox, "shadow_color", HIGHLIGHT_COLOR, SCALE_DURATION)
 	audio_player.stream = sound_hover
@@ -46,35 +53,52 @@ func _on_mouse_entered():
 	
 func _on_mouse_exited():
 	_hovered = false
-	var tween = get_tree().create_tween()
+	var tween = Globals.new_tween()
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), SCALE_DURATION)
 	tween.tween_property(tween_stylebox, "shadow_color", SHADOW_COLOR, SCALE_DURATION)
 
 func _on_select_button_pressed():
+	Globals.unlock_upgrade(upgrade_type)
 	audio_player.stream = sound_select
 	audio_player.play()
-	close_upgrade_container()
+	#close_upgrade_container()
+	select_upgrade_container()
 
 func close_upgrade_container():
 	animation_player.play("close_animation")
 	tween_close_animation()
+	
+func select_upgrade_container():
+	animation_player.play("select_animation")
+	tween_select_animation()
 	
 func open_upgrade_container():
 	animation_player.play("open_animation")
 	tween_open_animation()
 	
 func tween_close_animation():
-	var tween = get_tree().create_tween()
+	var tween = Globals.new_tween()
 	tween.tween_property(self, "position", ORIGINAL_POSITION + TWEEN_OFFSET, SCALE_DURATION*3)
 
 func tween_open_animation():
-	var tween = get_tree().create_tween()
+	var tween = Globals.new_tween()
 	tween.tween_property(self, "position", ORIGINAL_POSITION, SCALE_DURATION*1.5)
 
+func tween_select_animation():
+	var tween = Globals.new_tween()
+	tween.tween_property(self, "position", get_viewport_rect().size / 2 - pivot_offset, SCALE_DURATION)
+	Globals.unlock_upgrade(upgrade_type)
+
 func initialize_container():
-	await get_tree().process_frame
+	await get_tree().create_timer(0.1).timeout
 	ORIGINAL_POSITION = get_rect().position
 	
 	await get_tree().create_timer(0.1).timeout
 	position = ORIGINAL_POSITION + TWEEN_OFFSET / 4
 	
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "close_animation" or "select_animation":
+		#queue_free()
+		print(anim_name)

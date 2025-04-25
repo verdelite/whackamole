@@ -1,0 +1,270 @@
+[gd_scene load_steps=44 format=3 uid="uid://dn6p28eyctge8"]
+
+[ext_resource type="Script" uid="uid://fht23g2p5c4r" path="res://Scenes/WhackAMole/Mole/mole.gd" id="1_3al7i"]
+[ext_resource type="Texture2D" uid="uid://bp3l8kfts5uuo" path="res://AssetWIPs/Hole_Clipping.png" id="1_rkuph"]
+[ext_resource type="Texture2D" uid="uid://b66ip6x4xoepg" path="res://AssetWIPs/Hole.png" id="1_yac58"]
+[ext_resource type="Texture2D" uid="uid://knn564ja6hyu" path="res://Assets/Sprite_Enemy_Generic.png" id="4_3lxhc"]
+[ext_resource type="Script" uid="uid://dn2snnbd6afqq" path="res://Scenes/WhackAMole/Mole/mole_audio.gd" id="5_rq12v"]
+[ext_resource type="AudioStream" uid="uid://bb6ejp4f6b77p" path="res://Assets/Sound/gorilla_hurt_01.wav" id="6_16qye"]
+[ext_resource type="AudioStream" uid="uid://du4eohh2nlg45" path="res://Assets/Sound/gorilla_hurt_02.wav" id="7_7fybg"]
+[ext_resource type="AudioStream" uid="uid://bjfr28c1d86re" path="res://Assets/Sound/gorilla_hurt_03.wav" id="8_kbw6x"]
+[ext_resource type="AudioStream" uid="uid://cn7gty33vbk5e" path="res://Assets/Sound/gorilla_hurt_04.wav" id="9_wn0kg"]
+[ext_resource type="AudioStream" uid="uid://dymr07j8dsx12" path="res://Assets/Sound/gorilla_hurt_05.wav" id="10_7ksqf"]
+[ext_resource type="AudioStream" uid="uid://e4khh8v4agkv" path="res://Assets/Sound/gorilla_hurt_06.wav" id="11_7eiqb"]
+[ext_resource type="AudioStream" uid="uid://2idtaqi7a48o" path="res://Assets/Sound/gorilla_hurt_07.wav" id="12_2xj7k"]
+[ext_resource type="AudioStream" uid="uid://bd5ud48dynapu" path="res://Assets/Sound/gorilla_hurt_08.wav" id="13_l865l"]
+[ext_resource type="AudioStream" uid="uid://dpqy6htqy37he" path="res://Assets/Sound/gorilla_hurt_09.wav" id="14_4lowo"]
+[ext_resource type="AudioStream" uid="uid://cv63lj3oykjws" path="res://Assets/Sound/gorilla_hurt_10.wav" id="15_tjdbf"]
+[ext_resource type="AudioStream" uid="uid://dekfh8e7b5nr1" path="res://Assets/Sound/zombie_voice_general_emote_01.wav" id="16_7fybg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lxhc"]
+atlas = ExtResource("4_3lxhc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yac58"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lxhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_3lxhc"]
+resource_name = "Death"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="Animation" id="Animation_rkuph"]
+resource_name = "Emerge"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.33333, 2.5),
+"transitions": PackedFloat32Array(0.5, 2, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -150), Vector2(0, -150), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rq12v"]
+resource_name = "Hiding"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, -150), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yac58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="Animation" id="Animation_3al7i"]
+resource_name = "Waiting"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -150), Vector2(0, -150)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3al7i"]
+_data = {
+&"Death": SubResource("Animation_3lxhc"),
+&"Emerge": SubResource("Animation_rkuph"),
+&"Hiding": SubResource("Animation_rq12v"),
+&"RESET": SubResource("Animation_yac58"),
+&"Waiting": SubResource("Animation_3al7i")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3lxhc"]
+animation = &"Death"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_shvpk"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6s6kt"]
+graph_offset = Vector2(-341.902, 45.2244)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_3lxhc")
+nodes/Animation/position = Vector2(60, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_shvpk")
+nodes/TimeScale/position = Vector2(220, 180)
+nodes/output/position = Vector2(420, 160)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_shvpk"]
+animation = &"Emerge"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6s6kt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x5ri1"]
+graph_offset = Vector2(-41.7462, 33.6748)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_shvpk")
+nodes/Animation/position = Vector2(400, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_6s6kt")
+nodes/TimeScale/position = Vector2(640, 160)
+nodes/output/position = Vector2(860, 180)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3al7i"]
+animation = &"Hiding"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rq12v"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3lxhc"]
+graph_offset = Vector2(-286.746, 104.062)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_3al7i")
+nodes/Animation/position = Vector2(-80, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rq12v")
+nodes/TimeScale/position = Vector2(140, 100)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6s6kt"]
+animation = &"Waiting"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_x5ri1"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_feg02"]
+graph_offset = Vector2(-117.639, 17.633)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_6s6kt")
+nodes/Animation/position = Vector2(180, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_x5ri1")
+nodes/TimeScale/position = Vector2(400, 100)
+nodes/output/position = Vector2(620, 100)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3al7i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5l2kg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4cpyo"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x5ri1"]
+advance_mode = 2
+advance_condition = &"hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3lxhc"]
+advance_mode = 2
+advance_condition = &"hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_shvpk"]
+advance_mode = 2
+advance_condition = &"hit"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_feg02"]
+states/Death/node = SubResource("AnimationNodeBlendTree_6s6kt")
+states/Death/position = Vector2(577, 232)
+states/Emerge/node = SubResource("AnimationNodeBlendTree_x5ri1")
+states/Emerge/position = Vector2(353, 96)
+states/End/position = Vector2(829, 96)
+states/Hiding/node = SubResource("AnimationNodeBlendTree_3lxhc")
+states/Hiding/position = Vector2(688, 96)
+states/Start/position = Vector2(205, 90)
+states/Waiting/node = SubResource("AnimationNodeBlendTree_feg02")
+states/Waiting/position = Vector2(529, 96)
+transitions = ["Start", "Emerge", SubResource("AnimationNodeStateMachineTransition_3al7i"), "Emerge", "Waiting", SubResource("AnimationNodeStateMachineTransition_5l2kg"), "Waiting", "Hiding", SubResource("AnimationNodeStateMachineTransition_4cpyo"), "Emerge", "Death", SubResource("AnimationNodeStateMachineTransition_x5ri1"), "Waiting", "Death", SubResource("AnimationNodeStateMachineTransition_3lxhc"), "Hiding", "Death", SubResource("AnimationNodeStateMachineTransition_shvpk")]
+graph_offset = Vector2(56, 29)
+
+[node name="Mole" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_3al7i")
+speed_emerge = 1.5
+speed_hide = 1.5
+speed_wait = 2.0
+
+[node name="HoleBG" type="Sprite2D" parent="."]
+texture = ExtResource("1_yac58")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("1_rkuph")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+self_modulate = Color(0.611765, 0.611765, 0.611765, 1)
+position = Vector2(0, 100)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_yac58")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3al7i")
+}
+autoplay = "Emerge"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_feg02")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/hit = false
+parameters/Death/TimeScale/scale = 1.0
+parameters/Emerge/TimeScale/scale = 1.0
+parameters/Hiding/TimeScale/scale = 1.0
+parameters/Waiting/TimeScale/scale = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("5_rq12v")
+audio_hit = Array[AudioStream]([ExtResource("6_16qye"), ExtResource("7_7fybg"), ExtResource("8_kbw6x"), ExtResource("9_wn0kg"), ExtResource("10_7ksqf"), ExtResource("11_7eiqb"), ExtResource("12_2xj7k"), ExtResource("13_l865l"), ExtResource("14_4lowo"), ExtResource("15_tjdbf")])
+audio_fled = Array[AudioStream]([ExtResource("16_7fybg")])
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

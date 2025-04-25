@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://p26g0gmehng4"]
+
+[ext_resource type="Script" uid="uid://dx341fqjwy70o" path="res://Scenes/WhackAMole/whack_a_mole.gd" id="1_fwkvb"]
+[ext_resource type="PackedScene" uid="uid://b7x2goluwbckf" path="res://Scenes/WhackAMole/UI/ui_whack.tscn" id="3_scv66"]
+[ext_resource type="PackedScene" uid="uid://djsk6sp5cp48h" path="res://Scenes/WhackAMole/Character/character.tscn" id="4_3w4c0"]
+[ext_resource type="AudioStream" uid="uid://fgoas82qvngr" path="res://Assets/BGM/music_comedy_quirky_fun_knockout.wav" id="4_hero5"]
+[ext_resource type="PackedScene" uid="uid://dtxrh0nh2hdov" path="res://Scenes/WhackAMole/Ally/ally_rhiana.tscn" id="5_hero5"]
+
+[node name="WhackAMole" type="Node2D" node_paths=PackedStringArray("character")]
+script = ExtResource("1_fwkvb")
+character = NodePath("Character")
+
+[node name="Character" parent="." instance=ExtResource("4_3w4c0")]
+top_level = true
+position = Vector2(63, 357)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIWhack" parent="CanvasLayer" instance=ExtResource("3_scv66")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hero5")
+volume_db = -15.0
+autoplay = true
+
+[node name="AllyRhiana" parent="." instance=ExtResource("5_hero5")]
+unique_name_in_owner = true
+position = Vector2(32, 622)

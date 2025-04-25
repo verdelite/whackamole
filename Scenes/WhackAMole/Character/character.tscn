@@ -1,0 +1,128 @@
+[gd_scene load_steps=25 format=3 uid="uid://djsk6sp5cp48h"]
+
+[ext_resource type="Script" uid="uid://cm8bx0ib4y3hi" path="res://Scenes/WhackAMole/Character/character.gd" id="1_1fohn"]
+[ext_resource type="Texture2D" uid="uid://b7k86jqdtwrkw" path="res://AssetWIPs/eskimo-boy-attack-game-sprites-vector-21861354.png" id="1_w1sl2"]
+[ext_resource type="Script" uid="uid://dn2snnbd6afqq" path="res://Scenes/WhackAMole/Mole/mole_audio.gd" id="3_lxyrs"]
+[ext_resource type="AudioStream" uid="uid://dkm6gitkccvv4" path="res://Assets/Sound/voice_male_b_attack_set1_01.wav" id="4_3hxfo"]
+[ext_resource type="AudioStream" uid="uid://cx67uc634ho7t" path="res://Assets/Sound/voice_male_b_attack_set1_02.wav" id="5_cqt42"]
+[ext_resource type="AudioStream" uid="uid://bgypvksdmoltw" path="res://Assets/Sound/voice_male_b_attack_set1_03.wav" id="6_0rodp"]
+[ext_resource type="AudioStream" uid="uid://bojhsapak2qvd" path="res://Assets/Sound/voice_male_b_attack_set1_04.wav" id="7_sxwyk"]
+[ext_resource type="AudioStream" uid="uid://dw8r76lb2lgw2" path="res://Assets/Sound/voice_male_b_attack_set1_05.wav" id="8_hk6br"]
+[ext_resource type="AudioStream" uid="uid://copxn2b6uib0o" path="res://Assets/Sound/voice_male_b_attack_set1_06.wav" id="9_4xnht"]
+[ext_resource type="AudioStream" uid="uid://0p2r1d6vo8sb" path="res://Assets/Sound/voice_male_b_attack_set1_07.wav" id="10_flj0l"]
+[ext_resource type="AudioStream" uid="uid://b8uhi6aqy54eg" path="res://Assets/Sound/voice_male_b_battle_laugh_01.wav" id="11_3hxfo"]
+[ext_resource type="AudioStream" uid="uid://bt7jtblmwtyr1" path="res://Assets/Sound/punch_grit_wet_impact_10.wav" id="12_0rodp"]
+[ext_resource type="AudioStream" uid="uid://be4m1kptue3ka" path="res://Assets/Sound/punch_head_weapon_bat_impact_05.wav" id="13_sxwyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fohn"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(0, 400, 177, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qngs"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(177, 400, 177, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4buf"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(354, 400, 177, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m00k1"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(0, 0, 76, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d25bx"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(76, 0, 76, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqh1g"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(0, 258, 106, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xromc"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(106, 258, 106, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3rg0"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(212, 258, 106, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxyrs"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(318, 258, 106, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hxfo"]
+atlas = ExtResource("1_w1sl2")
+region = Rect2(424, 258, 106, 129)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqt42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fohn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qngs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4buf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qngs")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m00k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d25bx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqh1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xromc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3rg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxyrs")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3hxfo")
+}],
+"loop": false,
+"name": &"Whack",
+"speed": 12.0
+}]
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_1fohn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cqt42")
+animation = &"Whack"
+autoplay = "Idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("3_lxyrs")
+audio_attack = Array[AudioStream]([ExtResource("4_3hxfo"), ExtResource("5_cqt42"), ExtResource("6_0rodp"), ExtResource("7_sxwyk"), ExtResource("8_hk6br"), ExtResource("9_4xnht"), ExtResource("10_flj0l")])
+audio_special = Array[AudioStream]([ExtResource("11_3hxfo")])
+
+[node name="AudioStreamPlayerWeapon" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("3_lxyrs")
+audio_hit = Array[AudioStream]([ExtResource("12_0rodp")])
+audio_emerge = Array[AudioStream]([ExtResource("13_sxwyk")])
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

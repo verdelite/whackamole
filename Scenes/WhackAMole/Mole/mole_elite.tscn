@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://sasfie40kjxa"]
+
+[ext_resource type="PackedScene" uid="uid://dn6p28eyctge8" path="res://Scenes/WhackAMole/Mole/mole.tscn" id="1_ojpfq"]
+[ext_resource type="Texture2D" uid="uid://dc2asjxld2tiq" path="res://Assets/Sprite_Enemy_Elite.png" id="2_qscet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx3ei"]
+atlas = ExtResource("2_qscet")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7acy"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx3ei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mole_Elite" instance=ExtResource("1_ojpfq")]
+speed_emerge = 2.5
+speed_hide = 2.5
+speed_wait = 3.5
+mole_type = 2
+score = 2
+
+[node name="AnimatedSprite2D" parent="Sprite2D" index="0"]
+sprite_frames = SubResource("SpriteFrames_d7acy")
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/Waiting/TimeScale/scale = 0.0137059

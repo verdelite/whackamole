@@ -1,0 +1,37 @@
+Kollateralschaden:
+- Bürgerliche anzugreifen führt Combos fort (aber gibt nach wie vor Minuspunkte)
+
+Kollateralschaden+
+- Bürgerliche anzugreifen gibt nicht länger Minuspunkte
+
+Blut für den Blutgott!
+- Bürgerliche anzugreifen gibt nun Punkte
+
+
+Rhiana:
+Rhiana gibt Nezahet Rückendeckung! (Schießt auf Untote, X Sekunden Ladezeit)
+
+Prioritäten/Pfeile sparen:
+Rhiana schießt nicht mehr auf reguläre Untote
+
+Schnellladen:
+Rhiana hat nur noch eine Ladezeit von X Sekunden
+
+Rhiana, was machst du da?
+Rhiana schießt nun auch auf Bürgerliche
+
+
+Nala, gib mal Schub!
+Einmalig, Neza wird verschnellert für X Sekunden 
+(Alle anderen Objekte bewegen sich langsamer)
+
+Kennt ihr schon Liselotte?
+Einmalig, Der bezaubernde Anblick der zukünftigen Königin des Hirtenlaufs stärkt die Kampfmoral
+Neza regeneriert X Leben/Combo Score-Bonus?
+
+Gibt es hier irgendwo eine Kneipe?
+Lu macht die Gegend unsicher. 
+Es tauchen weniger Bürgerliche auf./Combo Score-Bonus?
+
+
+

@@ -1,0 +1,172 @@
+[gd_scene load_steps=22 format=3 uid="uid://dtxrh0nh2hdov"]
+
+[ext_resource type="Script" uid="uid://bmqjrn5bv5joo" path="res://Scenes/WhackAMole/Ally/ally_rhiana.gd" id="1_1rqkx"]
+[ext_resource type="Texture2D" uid="uid://b7k86jqdtwrkw" path="res://AssetWIPs/eskimo-boy-attack-game-sprites-vector-21861354.png" id="2_4oi3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cknh"]
+atlas = ExtResource("2_4oi3y")
+region = Rect2(440, 0, 88, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aregv"]
+atlas = ExtResource("2_4oi3y")
+region = Rect2(176, 0, 88, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtbft"]
+atlas = ExtResource("2_4oi3y")
+region = Rect2(0, 400, 177, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voufy"]
+atlas = ExtResource("2_4oi3y")
+region = Rect2(177, 400, 177, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he7hq"]
+atlas = ExtResource("2_4oi3y")
+region = Rect2(354, 400, 177, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_752li"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cknh")
+}],
+"loop": true,
+"name": &"Disabled",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aregv")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtbft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voufy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he7hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voufy")
+}],
+"loop": false,
+"name": &"Shooting",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_0cknh"]
+resource_name = "Disabled"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyAnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Disabled", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4oi3y"]
+resource_name = "Idle"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyAnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_aregv"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_jtbft"]
+resource_name = "Shooting"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyAnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Shooting", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cknh"]
+_data = {
+&"Disabled": SubResource("Animation_0cknh"),
+&"Idle": SubResource("Animation_4oi3y"),
+&"RESET": SubResource("Animation_aregv"),
+&"Shooting": SubResource("Animation_jtbft")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4oi3y"]
+animation = &"Disabled"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aregv"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0cknh"]
+animation = &"Shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtbft"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_voufy"]
+advance_mode = 2
+advance_condition = &"active"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_he7hq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_752li"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mj2yk"]
+states/Disabled/node = SubResource("AnimationNodeAnimation_4oi3y")
+states/Disabled/position = Vector2(383, 138)
+states/Idle/node = SubResource("AnimationNodeAnimation_aregv")
+states/Idle/position = Vector2(494, 45)
+states/Shooting/node = SubResource("AnimationNodeAnimation_0cknh")
+states/Shooting/position = Vector2(574, 169)
+transitions = ["Start", "Disabled", SubResource("AnimationNodeStateMachineTransition_jtbft"), "Disabled", "Idle", SubResource("AnimationNodeStateMachineTransition_voufy"), "Idle", "Shooting", SubResource("AnimationNodeStateMachineTransition_he7hq"), "Shooting", "Disabled", SubResource("AnimationNodeStateMachineTransition_752li")]
+
+[node name="AllyRhiana" type="Node2D"]
+script = ExtResource("1_1rqkx")
+
+[node name="AllyAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_752li")
+animation = &"Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0cknh")
+}
+autoplay = "Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_mj2yk")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/active = false

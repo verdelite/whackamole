@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Zum Taenzelnden Mantikor"
+run/main_scene="uid://p26g0gmehng4"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="uid://cbtypkbtjkg1c"
+
+[autoload]
+
+SceneManager="*res://Scenes/SceneManager/scene_manager.gd"
+Globals="*res://Scenes/globals.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+Enemy="A scoreable target"
+
+[input_devices]
+
+pointing/android/enable_long_press_as_right_click=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

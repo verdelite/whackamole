@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu6oxp5osvv1g"]
+
+[ext_resource type="Script" uid="uid://cw71o76x6n74m" path="res://Scenes/SceneManager/scene_manager.gd" id="1_car14"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_car14")
+
+[connection signal="mole_hit" from="." to="." method="_on_mole_hit"]
+[connection signal="mole_missed" from="." to="." method="_on_mole_missed"]

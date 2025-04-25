@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://p26g0gmehng4"]
+
+[ext_resource type="Script" uid="uid://dx341fqjwy70o" path="res://Scenes/WhackAMole/whack_a_mole.gd" id="1_fwkvb"]
+[ext_resource type="PackedScene" uid="uid://dn6p28eyctge8" path="res://Scenes/WhackAMole/Mole/mole.tscn" id="3_scv66"]
+[ext_resource type="PackedScene" uid="uid://djsk6sp5cp48h" path="res://Scenes/WhackAMole/Character/character.tscn" id="4_3w4c0"]
+[ext_resource type="PackedScene" uid="uid://bapd2fprfb76b" path="res://Scenes/WhackAMole/Hole/hole.tscn" id="4_e6hic"]
+
+[node name="WhackAMole" type="Node2D" node_paths=PackedStringArray("character")]
+script = ExtResource("1_fwkvb")
+character = NodePath("Character")
+
+[node name="Hole" parent="." instance=ExtResource("4_e6hic")]
+position = Vector2(91, 93)
+
+[node name="Mole" parent="." instance=ExtResource("3_scv66")]
+position = Vector2(91, 93)
+
+[node name="Character" parent="." instance=ExtResource("4_3w4c0")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(16, -5)
+
+[connection signal="hole_clicked" from="Hole" to="." method="_on_target_clicked"]
+[connection signal="mole_clicked" from="Mole" to="." method="_on_target_clicked"]

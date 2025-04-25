@@ -1,0 +1,577 @@
+[gd_scene load_steps=36 format=3 uid="uid://b7x2goluwbckf"]
+
+[ext_resource type="StyleBox" uid="uid://c6w1besjy54h2" path="res://Scenes/WhackAMole/UI/new_style_box_flat.res" id="1_mjnwy"]
+[ext_resource type="Script" uid="uid://ct0pnturxkmbc" path="res://Scenes/WhackAMole/UI/ui_whack_control.gd" id="1_sm0xq"]
+[ext_resource type="Script" uid="uid://duo8pjisquhg8" path="res://Scenes/WhackAMole/UI/ui_audio.gd" id="3_b3ham"]
+[ext_resource type="LabelSettings" uid="uid://c11n6bj80gii2" path="res://Scenes/WhackAMole/UI/ui_whack_combo_setting.tres" id="3_xxcw7"]
+[ext_resource type="Animation" uid="uid://cw1dmirmfc4uc" path="res://Scenes/WhackAMole/UI/Animations/nine_appears.res" id="4_jkdsj"]
+[ext_resource type="AudioStream" uid="uid://boqki6og6w4qo" path="res://Assets/Sound/ui_menu_popup_message_07.wav" id="4_wxwq2"]
+[ext_resource type="Animation" uid="uid://bh0tp05xhgb2p" path="res://Scenes/WhackAMole/UI/Animations/nine_invisible.res" id="5_kmvpd"]
+[ext_resource type="Script" uid="uid://dvn63ofclqe8q" path="res://Scenes/WhackAMole/UI/upgrade_screen_menu.gd" id="8_ks42o"]
+
+[sub_resource type="Theme" id="Theme_mjnwy"]
+default_font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks42o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y3hye"]
+font_size = 32
+font_color = Color(1, 0.732333, 0.27, 1)
+outline_size = 8
+outline_color = Color(0.18, 0.0846, 0.0846, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jkdsj"]
+font_color = Color(0.76, 0.76, 0.76, 0.756863)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm0xq"]
+
+[sub_resource type="Animation" id="Animation_b3ham"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/Neun:label_settings:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [256]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/Neun:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.732333, 0.27, 0.513726)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/Neun:label_settings:outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.18, 0.0846, 0.0846, 0.513726)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/Neun:label_settings:outline_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wxwq2"]
+_data = {
+&"RESET": SubResource("Animation_b3ham"),
+&"nine_appears": ExtResource("4_jkdsj"),
+&"nine_invisible": ExtResource("5_kmvpd")
+}
+
+[sub_resource type="Animation" id="Animation_klxri"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("LabelSettings_y3hye")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings:font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings:outline_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_jkdsj"]
+resource_name = "counter_fade"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings:font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [48, 32]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings:outline_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [12, 8]
+}
+
+[sub_resource type="Animation" id="Animation_im8jq"]
+resource_name = "counter_increase"
+length = 0.26667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings:font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 48]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/CenterContainer/ComboCounter:label_settings:outline_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfhh0"]
+_data = {
+&"RESET": SubResource("Animation_klxri"),
+&"counter_fade": SubResource("Animation_jkdsj"),
+&"counter_increase": SubResource("Animation_im8jq")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jkdsj"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kmvpd"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tb2fu"]
+animation = &"counter_fade"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ks42o"]
+animation = &"counter_increase"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tb2fu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_im8jq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_klxri"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hfhh0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q3my1"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hfhh0"]
+states/RESET/node = SubResource("AnimationNodeAnimation_kmvpd")
+states/RESET/position = Vector2(395, 77)
+"states/RESET 2/node" = SubResource("AnimationNodeAnimation_jkdsj")
+"states/RESET 2/position" = Vector2(210, 99)
+states/counter_fade/node = SubResource("AnimationNodeAnimation_tb2fu")
+states/counter_fade/position = Vector2(652, 115.786)
+states/counter_increase/node = SubResource("AnimationNodeAnimation_ks42o")
+states/counter_increase/position = Vector2(657, 46)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_tb2fu"), "RESET", "counter_increase", SubResource("AnimationNodeStateMachineTransition_im8jq"), "counter_increase", "counter_fade", SubResource("AnimationNodeStateMachineTransition_klxri"), "counter_fade", "counter_increase", SubResource("AnimationNodeStateMachineTransition_hfhh0"), "counter_fade", "RESET", SubResource("AnimationNodeStateMachineTransition_q3my1")]
+graph_offset = Vector2(49, -42.214)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkdsj"]
+content_margin_left = 16.0
+content_margin_top = 32.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.133333, 0.0352941, 0.172549, 0.529412)
+corner_radius_top_left = 128
+corner_radius_top_right = 128
+corner_radius_bottom_right = 128
+corner_radius_bottom_left = 128
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmvpd"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.517647)
+outline_size = 12
+outline_color = Color(0.133333, 0.0352941, 0.172549, 1)
+
+[sub_resource type="Animation" id="Animation_ks42o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer/UpgradeTitle:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_kmvpd"]
+resource_name = "open_upgrade_screen"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:pivot_offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer/UpgradeTitle:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333, 1.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 50]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_upgrades"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tb2fu"]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:pivot_offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer/UpgradeTitle:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb2fu"]
+_data = {
+&"RESET": SubResource("Animation_ks42o"),
+&"hidden": SubResource("Animation_tb2fu"),
+&"open_upgrade_screen": SubResource("Animation_kmvpd")
+}
+
+[node name="UIWhack" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_sm0xq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -308.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_mjnwy")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = ExtResource("1_mjnwy")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScoreCounter" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score: "
+horizontal_alignment = 2
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.11
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ks42o")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ComboCounter" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score: "
+label_settings = SubResource("LabelSettings_y3hye")
+horizontal_alignment = 2
+
+[node name="ComboLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jkdsj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sm0xq")
+
+[node name="Neun" type="Label" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "9!"
+label_settings = ExtResource("3_xxcw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIAnimationPlayer" type="AnimationPlayer" parent="CenterContainer"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_wxwq2")
+}
+autoplay = "nine_invisible"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -7.0
+pitch_scale = 0.91
+script = ExtResource("3_b3ham")
+audio_combo = Array[AudioStream]([ExtResource("4_wxwq2")])
+
+[node name="UIComboAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../MarginContainer/VBoxContainer/PanelContainer2")
+libraries = {
+&"": SubResource("AnimationLibrary_hfhh0")
+}
+
+[node name="UIAnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%UIAnimationTree/../MarginContainer/VBoxContainer/PanelContainer2")
+tree_root = SubResource("AnimationNodeStateMachine_hfhh0")
+anim_player = NodePath("../UIComboAnimationPlayer")
+
+[node name="UpgradeScreenMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+script = ExtResource("8_ks42o")
+
+[node name="PanelContainer" type="PanelContainer" parent="UpgradeScreenMenu"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jkdsj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreenMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="UpgradeTitle" type="Label" parent="UpgradeScreenMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Wähle eine Verbesserung:"
+label_settings = SubResource("LabelSettings_kmvpd")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+visible_ratio = -0.0416667
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeScreenMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ListUpgradeContainers" type="HBoxContainer" parent="UpgradeScreenMenu/PanelContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 48
+
+[node name="UIUpgradeAnimationPlayer" type="AnimationPlayer" parent="UpgradeScreenMenu"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_tb2fu")
+}
+autoplay = "hidden"

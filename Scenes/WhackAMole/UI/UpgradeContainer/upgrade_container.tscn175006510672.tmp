@@ -1,0 +1,211 @@
+[gd_scene load_steps=20 format=3 uid="uid://6vfyrbclgw88"]
+
+[ext_resource type="StyleBox" uid="uid://cwroadkc0dy2s" path="res://Scenes/WhackAMole/UI/ui_stylebox_upgrade_container.tres" id="1_d16sn"]
+[ext_resource type="Script" uid="uid://sx56dr6ubwfa" path="res://Scenes/WhackAMole/UI/upgrade_container.gd" id="2_6e6x3"]
+[ext_resource type="Texture2D" uid="uid://b1yisbhy1q6tb" path="res://AssetWIPs/update-icon.jpg" id="3_jj4by"]
+[ext_resource type="AudioStream" uid="uid://chgaspbnw88ex" path="res://Assets/Sound/ui_menu_button_scroll_05.wav" id="4_jj4by"]
+[ext_resource type="AudioStream" uid="uid://bfnqsu7sa1evx" path="res://Assets/Sound/ui_menu_button_scroll_03.wav" id="5_ctwbl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks42o"]
+bg_color = Color(0.941176, 0.34902, 0.254902, 0.529412)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Theme" id="Theme_kmvpd"]
+Button/font_sizes/font_size = 21
+Button/fonts/font = null
+Button/styles/normal = SubResource("StyleBoxFlat_ks42o")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks42o"]
+font_size = 28
+font_color = Color(1, 0.733333, 0.270588, 1)
+outline_size = 8
+outline_color = Color(0.180392, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmvpd"]
+font_size = 18
+font_color = Color(1, 1, 1, 0.517647)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kmvpd"]
+color = Color(0.133333, 0.0352941, 0.172549, 0.529412)
+thickness = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tb2fu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im8jq"]
+bg_color = Color(0.94, 0.345293, 0.2538, 0.815686)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.133333, 0.0352941, 0.172549, 0.529412)
+shadow_size = 12
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb2fu"]
+bg_color = Color(0.941176, 0.34902, 0.254902, 0.529412)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.133333, 0.0352941, 0.172549, 0.529412)
+shadow_size = 12
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klxri"]
+bg_color = Color(1, 0.37, 0.3805, 0.52549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.368627, 0.807843, 0.52549)
+shadow_size = 8
+
+[sub_resource type="Theme" id="Theme_ks42o"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tb2fu")
+Button/styles/hover = SubResource("StyleBoxFlat_im8jq")
+Button/styles/normal = SubResource("StyleBoxFlat_tb2fu")
+Button/styles/pressed = SubResource("StyleBoxFlat_klxri")
+
+[sub_resource type="Animation" id="Animation_jj4by"]
+resource_name = "close_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ctwbl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k51tu"]
+resource_name = "open_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k51tu"]
+_data = {
+&"RESET": SubResource("Animation_ctwbl"),
+&"close_animation": SubResource("Animation_jj4by"),
+&"open_animation": SubResource("Animation_k51tu")
+}
+
+[node name="UpgradeContainer" type="PanelContainer"]
+offset_right = 355.0
+offset_bottom = 411.0
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_d16sn")
+script = ExtResource("2_6e6x3")
+tween_stylebox = ExtResource("1_d16sn")
+upgrade_image = ExtResource("3_jj4by")
+sound_hover = ExtResource("5_ctwbl")
+sound_select = ExtResource("4_jj4by")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kmvpd")
+theme_override_constants/separation = 8
+
+[node name="UpgradeName" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upgrade Name"
+label_settings = SubResource("LabelSettings_ks42o")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+texture = ExtResource("3_jj4by")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="UpgradeFlavorText" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
+text = "Rhiana gibt Nezahet Rückendeckung!"
+label_settings = SubResource("LabelSettings_kmvpd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_kmvpd")
+
+[node name="UpgradeDescription" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+mouse_filter = 1
+bbcode_enabled = true
+text = "[font_size=21][center][color=\"lightsalmon\"]Rhiana schießt auf erschienene Untote. (Nachladezeit: 5 Sekunden)[/color][/center][/font_size]"
+fit_content = true
+
+[node name="SelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 11.13
+mouse_filter = 1
+theme = SubResource("Theme_ks42o")
+text = "AUSWÄHLEN"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k51tu")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]

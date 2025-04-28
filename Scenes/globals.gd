@@ -24,9 +24,10 @@ var all_upgrades: Array[UpgradeType] = []
 var upgrades_unlocked: Array[UpgradeType] = []
 
 signal new_upgrade
+signal close_menu
 signal level_up
 
-@export var SCORE_THRESHOLDS: Array[int] = [9, 99+3*99, 4*99+5*99, 9*99+7*99, 16*99+9*99, 25*99+11*99, 36*99+13*99, 49*99+15*99, 64*99+17*99, 9999]
+@export var SCORE_THRESHOLDS: Array[int] = [1, 3, 99+3*99, 4*99+5*99, 9*99+7*99, 16*99+9*99, 25*99+11*99, 36*99+13*99, 49*99+15*99, 64*99+17*99, 9999]
 #### Level 0: 99, Level 1: 396, Level 2: 891, Level 3: 1584, Level 4: 2475, Level 5: 3564, Level 6: 4851, Level 7: 6336, Level 8: 8019, Level 9: 101*99
 ## For most thresholds, the calculation equals (n^2)*99, although n=10 is the exception
 ## This calculation may be needed when implementing an Endless Mode
@@ -38,6 +39,7 @@ var tween: Tween
 
 func _ready():
 	CURRENT_THRESHOLD = SCORE_THRESHOLDS[CURRENT_LEVEL]
+	close_menu.connect(close_upgrade_menu)
 	
 func update_level():
 	CURRENT_THRESHOLD = SCORE_THRESHOLDS[CURRENT_LEVEL]
@@ -62,3 +64,7 @@ func unlock_upgrade(upgrade: UpgradeType):
 	
 func check_upgrade(upgrade: UpgradeType) -> bool:
 	return upgrades_unlocked.has(UpgradeType)
+	
+func close_upgrade_menu():
+	await get_tree().create_timer(0.5)
+	get_tree().paused = false

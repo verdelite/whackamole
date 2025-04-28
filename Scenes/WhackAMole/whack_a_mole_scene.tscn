@@ -20,6 +20,7 @@ position = Vector2(63, 357)
 [node name="UIWhack" parent="CanvasLayer" instance=ExtResource("3_scv66")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_hero5")
 volume_db = -15.0
 autoplay = true

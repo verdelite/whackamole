@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://6vfyrbclgw88"]
+[gd_scene load_steps=23 format=3 uid="uid://6vfyrbclgw88"]
 
 [ext_resource type="StyleBox" uid="uid://cwroadkc0dy2s" path="res://Scenes/WhackAMole/UI/UpgradeContainer/ui_stylebox_upgrade_container.tres" id="1_d16sn"]
 [ext_resource type="Script" uid="uid://sx56dr6ubwfa" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container.gd" id="2_6e6x3"]
 [ext_resource type="Texture2D" uid="uid://b1yisbhy1q6tb" path="res://AssetWIPs/update-icon.jpg" id="3_jj4by"]
 [ext_resource type="AudioStream" uid="uid://chgaspbnw88ex" path="res://Assets/Sound/ui_menu_button_scroll_05.wav" id="4_jj4by"]
 [ext_resource type="AudioStream" uid="uid://bfnqsu7sa1evx" path="res://Assets/Sound/ui_menu_button_scroll_03.wav" id="5_ctwbl"]
+[ext_resource type="AudioStream" uid="uid://b3gatk2qc56sj" path="res://Assets/Sound/collect_item_12.wav" id="6_ctwbl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks42o"]
 bg_color = Color(0.941176, 0.34902, 0.254902, 0.529412)
@@ -143,6 +144,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_3gl36"]
 resource_name = "select_animation"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,10 +152,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(3, 3)]
+"values": [Vector2(1, 1), Vector2(1.75, 1.75)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -162,7 +164,7 @@ tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.233333, 0.7),
+"times": PackedFloat32Array(0.966667, 1.33333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -188,6 +190,7 @@ tween_stylebox = ExtResource("1_d16sn")
 upgrade_image = ExtResource("3_jj4by")
 sound_hover = ExtResource("5_ctwbl")
 sound_select = ExtResource("4_jj4by")
+sound_chosen = ExtResource("6_ctwbl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

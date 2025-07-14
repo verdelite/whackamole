@@ -7,3 +7,6 @@ upgrade_type = 5
 upgrade_title = "Kollateralschaden+"
 upgrade_flavor = "\"Einige von euch könnten sterben, aber das ist ein Opfer, das ich bereit bin einzugehen!\""
 upgrade_description = "Bürgerliche anzugreifen führt nicht länger zu Punktverlust."
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+autowrap_mode = 0

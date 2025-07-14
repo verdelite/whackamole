@@ -3,6 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://dub3pcbe4gjnv" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_1.tscn" id="1_62led"]
 
 [node name="UpgradeContainer" instance=ExtResource("1_62led")]
+size_flags_horizontal = 3
 upgrade_type = 4
+upgrade_title = "Kollateralschaden"
 upgrade_flavor = "\"Hoppla, da ist mir meine Waffe wohl ausgerutscht!\""
 upgrade_description = "Bürgerliche anzugreifen führt Combos fort (aber führt nach wie vor zu Punktverlust)."
+
+[node name="MarginContainer" parent="." index="0"]
+custom_minimum_size = Vector2(0, 0)
+
+[node name="UpgradeFlavorText" parent="MarginContainer/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 0)
+
+[node name="UpgradeDescription" parent="MarginContainer/VBoxContainer" index="4"]
+text = "[font_size=21][center][color=\"lightsalmon\"]Rhiana schießt auf erschienene Untote. (Nachladezeit: 5 Sekunden)[/color][/center][/font_size]"

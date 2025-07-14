@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvprb5qrcnhgp"]
+
+[ext_resource type="PackedScene" uid="uid://6vfyrbclgw88" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container.tscn" id="1_exl5d"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_exl5d")]
+offset_bottom = 428.0
+upgrade_type = 9
+upgrade_title = "Gibt's hier irgendwo eine Kneipe?"
+upgrade_flavor = "Lu macht die Gegend unsicher."
+upgrade_description = "Für die nächsten X Sekunden tauchen weniger Bürgerliche auf."
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+autowrap_mode = 3

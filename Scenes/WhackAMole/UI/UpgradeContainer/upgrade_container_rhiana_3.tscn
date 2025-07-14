@@ -3,7 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://bg7r2dsefk6vp" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_2.tscn" id="1_1glq4"]
 
 [node name="UpgradeContainer" instance=ExtResource("1_1glq4")]
+offset_bottom = 466.0
 upgrade_type = 2
 upgrade_title = "Schnellladen"
 upgrade_flavor = "\"Das hat nur 20 AP gekostet!\""
-upgrade_description = "Rhiana schießt nun alle X Sekunden."
+upgrade_description = "Rhiana schießt nun alle 3 Sekunden."
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+autowrap_mode = 0
+
+[node name="SelectButton" parent="MarginContainer/VBoxContainer" index="5"]
+size_flags_vertical = 3

@@ -7,3 +7,6 @@ upgrade_type = 6
 upgrade_title = "Blutopfer"
 upgrade_flavor = "\"Blut für den Blutgott!\""
 upgrade_description = "Bürgerliche anzugreifen gibt nun Punkte."
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+autowrap_mode = 0

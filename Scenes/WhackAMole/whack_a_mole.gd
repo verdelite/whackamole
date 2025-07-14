@@ -61,11 +61,9 @@ func _physics_process(delta):
 
 			
 func spawn_mole():
-	#print("Spawning Mole from WhackAMole...")
 	var target = hole_list.pick_random()
 	target.spawn_mole()
 	spawn_time = SceneManager.rng.randf_range(spawn_interval[0], spawn_interval[1]) / spawn_speed
-	#print("New Spawn time: " + str(spawn_time))
 
 
 func _on_target_clicked(emitter):
@@ -86,16 +84,35 @@ func _on_target_clicked(emitter):
 	atk_cooldown = atk_cooldown_time
 	
 func mole_hit(mole):
-	if mole.score > 0:
+	var added_score = mole.score
+	
+	if added_score > 0 or Globals.collateral_combo > 0:
 		combo += 1
-		score += mole.score * (1 + (combo / 9))
 		
-		if combo % 9 == 0:
+		if added_score < 0:
+			added_score = Globals.get_collateral_multiplier() * added_score
+			
+		if combo % 9 == 0 and added_score > 0:
+			added_score = added_score * 9
 			SceneManager.combo_nine.emit()
+			
+		score += added_score * (1 + (combo / 9))
 		
 	else:
 		combo = 0
-		score += mole.score
+		score += added_score
+		
+
+	#if mole.score > 0:
+		#combo += 1
+		#score += mole.score * (1 + (combo / 9))
+		#
+		#if combo % 9 == 0:
+			#SceneManager.combo_nine.emit()
+		#
+	#else:
+		#combo = 0
+		#score += mole.score
 		
 func mole_emerged(mole):
 	if ally_rhiana:

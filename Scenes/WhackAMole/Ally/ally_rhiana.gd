@@ -11,6 +11,8 @@ var current_cooldown: float = 0.0
 
 @export var valid_targets: Array[Globals.MoleType] = [Globals.MoleType.STANDARD, Globals.MoleType.ELITE]
 
+func _ready():
+	UpgradeManager.rhiana = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

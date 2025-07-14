@@ -5,5 +5,12 @@
 [node name="UpgradeContainer" instance=ExtResource("1_5u2p3")]
 upgrade_type = 3
 upgrade_title = "Rhiana, was machst du da?!"
-upgrade_flavor = "\"Wir dachten, das sei ein Ghul!\""
+upgrade_flavor = "\"Wir dachten, das wäre ein Ghul!\""
 upgrade_description = "Rhiana schießt nun auch auf Bürgerliche."
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+text = "Rhiana, was machst du da?!"
+autowrap_mode = 3
+
+[node name="SelectButton" parent="MarginContainer/VBoxContainer" index="5"]
+size_flags_vertical = 1

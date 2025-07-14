@@ -117,7 +117,7 @@ func initialize_container():
 	position = ORIGINAL_POSITION + TWEEN_OFFSET / 4
 	
 func _on_animation_player_animation_finished(anim_name):
-	print("Animation finished: " + anim_name)
+	#print("Animation finished: " + anim_name)
 	if anim_name == "select_animation":
 		#print("Queue free called for: " + anim_name)
 		Globals.close_menu.emit()

@@ -5,6 +5,7 @@ extends MarginContainer
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var template_upgrade: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container.tscn")
+var available_upgrades: Array[PackedScene] = []
 
 @export var audio_open: AudioStream
 @export var audio_close: AudioStream
@@ -37,10 +38,15 @@ func hide_menu():
 	
 func spawn_upgrades():
 	spawned_upgrades = []
+	update_available_upgrades()
+	await get_tree().create_timer(0.2).timeout
 	for i in NUM_UPGRADES:
-		var new_upgrade = template_upgrade.instantiate()
+		var new_upgrade = available_upgrades[i].instantiate()
 		control_node.add_child(new_upgrade)
 		spawned_upgrades.append(new_upgrade)
+		
+func update_available_upgrades():
+	available_upgrades = UpgradeManager.get_upgrades()
 
 func show_upgrades():
 	for upgrade in spawned_upgrades:

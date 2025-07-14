@@ -5,4 +5,4 @@
 [node name="UpgradeContainer" instance=ExtResource("1_1633t")]
 upgrade_title = "Gefährtin: Rhiana"
 upgrade_flavor = "\"Rhiana, gib mir Rückendeckung!\""
-upgrade_description = "Schaltet Rhiana frei. Schießt alle X Sekunden auf erschienene Untote."
+upgrade_description = "Schaltet Rhiana frei. Schießt alle 5 Sekunden auf erschienene Untote."

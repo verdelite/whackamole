@@ -26,7 +26,7 @@ outline_size = 8
 outline_color = Color(0.180392, 0.0862745, 0.0862745, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kmvpd"]
-font_size = 18
+line_spacing = 1.0
 font_color = Color(1, 1, 1, 0.517647)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_kmvpd"]
@@ -181,9 +181,9 @@ _data = {
 
 [node name="UpgradeContainer" type="PanelContainer"]
 process_mode = 3
+custom_minimum_size = Vector2(355, 411)
 offset_right = 355.0
 offset_bottom = 411.0
-size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("1_d16sn")
 script = ExtResource("2_6e6x3")
 tween_stylebox = ExtResource("1_d16sn")
@@ -193,6 +193,7 @@ sound_select = ExtResource("4_jj4by")
 sound_chosen = ExtResource("6_ctwbl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(355, 411)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
@@ -212,6 +213,7 @@ text = "Upgrade Name"
 label_settings = SubResource("LabelSettings_ks42o")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 uppercase = true
 
 [node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer"]
@@ -227,6 +229,7 @@ stretch_mode = 5
 
 [node name="UpgradeFlavorText" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 47)
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.0
@@ -234,6 +237,7 @@ text = "Rhiana gibt Nezahet Rückendeckung!"
 label_settings = SubResource("LabelSettings_kmvpd")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -248,12 +252,12 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 mouse_filter = 1
 bbcode_enabled = true
-text = "[font_size=21][center][color=\"lightsalmon\"]Rhiana schießt auf erschienene Untote. (Nachladezeit: 5 Sekunden)[/color][/center][/font_size]"
+text = "[font_size=18][center][color=\"lightsalmon\"]Rhiana schießt auf erschienene Untote. (Nachladezeit: 5 Sekunden)[/color][/center][/font_size]"
 fit_content = true
 
 [node name="SelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-size_flags_vertical = 3
 size_flags_stretch_ratio = 11.13
 mouse_filter = 1
 theme = SubResource("Theme_ks42o")

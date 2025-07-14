@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkn35g6pw2jid"]
+
+[ext_resource type="PackedScene" uid="uid://6vfyrbclgw88" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container.tscn" id="1_2h7jm"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_2h7jm")]
+upgrade_type = 8
+upgrade_title = "Kennt ihr schon Liselotte?"
+upgrade_flavor = "Der bezaubernde Anblick der zukünftigen Hirtenlaufkönigin stärkt die Kampfmoral."
+upgrade_description = "Combos werden für die nächsten X Sekunden nicht mehr unterbrochen."

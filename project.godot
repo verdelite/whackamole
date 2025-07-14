@@ -19,6 +19,7 @@ config/icon="uid://cbtypkbtjkg1c"
 
 SceneManager="*res://Scenes/SceneManager/scene_manager.gd"
 Globals="*res://Scenes/globals.gd"
+UpgradeManager="*res://Scenes/WhackAMole/UI/UpgradeManager/upgrade_manager.gd"
 
 [display]
 

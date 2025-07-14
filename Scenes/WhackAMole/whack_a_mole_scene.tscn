@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://p26g0gmehng4"]
+[gd_scene load_steps=6 format=3 uid="uid://p26g0gmehng4"]
 
 [ext_resource type="Script" uid="uid://dx341fqjwy70o" path="res://Scenes/WhackAMole/whack_a_mole.gd" id="1_fwkvb"]
 [ext_resource type="PackedScene" uid="uid://b7x2goluwbckf" path="res://Scenes/WhackAMole/UI/ui_whack.tscn" id="3_scv66"]
 [ext_resource type="PackedScene" uid="uid://djsk6sp5cp48h" path="res://Scenes/WhackAMole/Character/character.tscn" id="4_3w4c0"]
 [ext_resource type="AudioStream" uid="uid://fgoas82qvngr" path="res://Assets/BGM/music_comedy_quirky_fun_knockout.wav" id="4_hero5"]
 [ext_resource type="PackedScene" uid="uid://dtxrh0nh2hdov" path="res://Scenes/WhackAMole/Ally/ally_rhiana.tscn" id="5_hero5"]
-[ext_resource type="PackedScene" uid="uid://dcu85ik74u17x" path="res://Scenes/WhackAMole/UI/UpgradeManager/UpgradeManager.tscn" id="6_e6hic"]
 
 [node name="WhackAMole" type="Node2D" node_paths=PackedStringArray("character")]
 process_mode = 1
@@ -29,6 +28,3 @@ autoplay = true
 [node name="AllyRhiana" parent="." instance=ExtResource("5_hero5")]
 unique_name_in_owner = true
 position = Vector2(32, 622)
-
-[node name="UpgradeManager" parent="." node_paths=PackedStringArray("rhiana") instance=ExtResource("6_e6hic")]
-rhiana = NodePath("../AllyRhiana")

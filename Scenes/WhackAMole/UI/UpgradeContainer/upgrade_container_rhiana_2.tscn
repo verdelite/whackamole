@@ -6,4 +6,13 @@
 upgrade_type = 1
 upgrade_title = "Pfeile sparen"
 upgrade_flavor = "\"Wir glauben, wir haben bald keine Pfeile mehr.\""
-upgrade_description = "Rhiana schießt nicht mehr auf reguläre Untote."
+upgrade_description = "Rhiana ignoriert gewöhnliche Untote."
+
+[node name="MarginContainer" parent="." index="0"]
+custom_minimum_size = Vector2(0, 0)
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+autowrap_mode = 0
+
+[node name="UpgradeDescription" parent="MarginContainer/VBoxContainer" index="4"]
+text = "[font_size=21][center][color=\"lightsalmon\"]Rhiana schießt auf erschienene Untote. (Nachladezeit: 5 Sekunden)[/color][/center][/font_size]"

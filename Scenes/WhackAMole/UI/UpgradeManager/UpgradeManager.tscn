@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcu85ik74u17x"]
+
+[ext_resource type="Script" uid="uid://ouyir40f1ycf" path="res://Scenes/WhackAMole/UI/UpgradeManager/upgrade_manager.gd" id="1_037qo"]
+
+[node name="UpgradeManager" type="Node"]
+script = ExtResource("1_037qo")

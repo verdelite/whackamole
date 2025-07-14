@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dub3pcbe4gjnv"]
+
+[ext_resource type="PackedScene" uid="uid://6vfyrbclgw88" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container.tscn" id="1_1633t"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_1633t")]
+upgrade_title = "Gefährtin: Rhiana"
+upgrade_flavor = "\"Rhiana, gib mir Rückendeckung!\""
+upgrade_description = "Schaltet Rhiana frei. Schießt alle X Sekunden auf erschienene Untote."

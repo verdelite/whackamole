@@ -66,5 +66,5 @@ func check_upgrade(upgrade: UpgradeType) -> bool:
 	return upgrades_unlocked.has(UpgradeType)
 	
 func close_upgrade_menu():
-	await get_tree().create_timer(0.5)
+	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = false

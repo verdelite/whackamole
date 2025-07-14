@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjkdfpaswqo2n"]
+
+[ext_resource type="PackedScene" uid="uid://dub3pcbe4gjnv" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_1.tscn" id="1_62led"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_62led")]
+upgrade_type = 4
+upgrade_flavor = "\"Hoppla, da ist mir meine Waffe wohl ausgerutscht!\""
+upgrade_description = "Bürgerliche anzugreifen führt Combos fort (aber führt nach wie vor zu Punktverlust)."

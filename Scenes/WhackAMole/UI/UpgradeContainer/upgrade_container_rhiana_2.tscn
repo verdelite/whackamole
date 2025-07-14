@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg7r2dsefk6vp"]
+
+[ext_resource type="PackedScene" uid="uid://dub3pcbe4gjnv" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_1.tscn" id="1_5gq8d"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_5gq8d")]
+upgrade_type = 1
+upgrade_title = "Pfeile sparen"
+upgrade_flavor = "\"Wir glauben, wir haben bald keine Pfeile mehr.\""
+upgrade_description = "Rhiana schießt nicht mehr auf reguläre Untote."

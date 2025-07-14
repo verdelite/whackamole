@@ -1,8 +1,8 @@
 Kollateralschaden:
-- Bürgerliche anzugreifen führt Combos fort (aber gibt nach wie vor Minuspunkte)
+- Bürgerliche anzugreifen führt Combos fort (aber führt nach wie vor zu Punktverlust).
 
 Kollateralschaden+
-- Bürgerliche anzugreifen gibt nicht länger Minuspunkte
+- Bürgerliche anzugreifen führt nicht länger zu Punktverlust.
 
 Blut für den Blutgott!
 - Bürgerliche anzugreifen gibt nun Punkte
@@ -22,7 +22,7 @@ Rhiana schießt nun auch auf Bürgerliche
 
 
 Nala, gib mal Schub!
-Einmalig, Neza wird verschnellert für X Sekunden 
+Neza wird verschnellert für X Sekunden 
 (Alle anderen Objekte bewegen sich langsamer)
 
 Kennt ihr schon Liselotte?

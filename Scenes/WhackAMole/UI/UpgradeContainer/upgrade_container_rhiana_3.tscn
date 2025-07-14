@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjtaf0h1jcgqn"]
+
+[ext_resource type="PackedScene" uid="uid://bg7r2dsefk6vp" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_2.tscn" id="1_1glq4"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_1glq4")]
+upgrade_type = 2
+upgrade_title = "Schnellladen"
+upgrade_flavor = "\"Das hat nur 20 AP gekostet!\""
+upgrade_description = "Rhiana schießt nun alle X Sekunden."

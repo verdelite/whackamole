@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0e8u88p58el3"]
+
+[ext_resource type="PackedScene" uid="uid://cjkdfpaswqo2n" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_collateral_1.tscn" id="1_6owvf"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_6owvf")]
+upgrade_type = 5
+upgrade_title = "Kollateralschaden+"
+upgrade_flavor = "\"Einige von euch könnten sterben, aber das ist ein Opfer, das ich bereit bin einzugehen!\""
+upgrade_description = "Bürgerliche anzugreifen führt nicht länger zu Punktverlust."

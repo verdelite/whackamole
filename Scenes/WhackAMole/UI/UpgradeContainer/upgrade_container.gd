@@ -11,10 +11,10 @@ var HIGHLIGHT_COLOR: Color = Color(1.0, 0.37, 0.811, 0.529)
 
 @export var upgrade_type: Globals.UpgradeType = Globals.UpgradeType.RHIANA_1
 
-@export var upgrade_title: String = "Upgrade Name"
+@export var upgrade_title: String = "Kollateralschaden"
 @export var upgrade_image: Texture2D
-@export var upgrade_flavor: String = "Das wohl!"
-@export var upgrade_description: String = "Hier könnte Ihre Beschreibung stehen!"
+@export var upgrade_flavor: String = "Einige von euch könnten sterben, aber das ist ein Opfer, das ich bereit bin einzugehen!"
+@export var upgrade_description: String = "Bürgerliche anzugreifen führt nicht mehr zu Punktverlust."
 
 @export var sound_hover: AudioStream
 @export var sound_select: AudioStream

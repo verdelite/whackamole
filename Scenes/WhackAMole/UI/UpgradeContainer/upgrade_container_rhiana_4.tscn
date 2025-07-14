@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg4o5dr1x3mth"]
+
+[ext_resource type="PackedScene" uid="uid://bjtaf0h1jcgqn" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_3.tscn" id="1_5u2p3"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_5u2p3")]
+upgrade_type = 3
+upgrade_title = "Rhiana, was machst du da?!"
+upgrade_flavor = "\"Wir dachten, das sei ein Ghul!\""
+upgrade_description = "Rhiana schießt nun auch auf Bürgerliche."

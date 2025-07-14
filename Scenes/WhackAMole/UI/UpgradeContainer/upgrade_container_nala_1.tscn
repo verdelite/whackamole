@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://emy3xutigvjy"]
+
+[ext_resource type="PackedScene" uid="uid://bg4o5dr1x3mth" path="res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_4.tscn" id="1_36l2l"]
+
+[node name="UpgradeContainer" instance=ExtResource("1_36l2l")]
+upgrade_type = 7
+upgrade_title = "Schnelle Handlung"
+upgrade_flavor = "\"Nala, gib mal Schub!\""
+upgrade_description = "Einmalig. Nezahet wird beschleunigt für X Sekunden. (Alle anderen Objekte bewegen sich langsamer.)"

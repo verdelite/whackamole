@@ -50,7 +50,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if spawn_time > 0:
-		spawn_time -= delta
+		spawn_time -= delta * UpgradeManager.TIME_DILATION
 		if spawn_time <= 0:
 			spawn_mole()
 	

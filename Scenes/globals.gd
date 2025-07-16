@@ -36,6 +36,7 @@ signal level_up
 @export var CURRENT_LEVEL = 0
 @export var CURRENT_THRESHOLD: int
 
+
 var collateral_combo: int = 0
 
 var COLLATERAL_SCORE_LIST: Array [int] = [ 1, 0, -1 ] # Will be multiplied with score if score is negative

@@ -6,6 +6,24 @@
 offset_bottom = 411.0
 size_flags_horizontal = 3
 upgrade_type = 7
-upgrade_title = "Schneller!"
+upgrade_title = "Axxelerando"
 upgrade_flavor = "\"Nala, gib mal Schub!\""
-upgrade_description = "Nezahet wird beschleunigt für X Sekunden. (Alle anderen Objekte bewegen sich langsamer.)"
+upgrade_description = "Nezahet wird beschleunigt für 10 Sekunden. (Alle anderen Objekte bewegen sich langsamer.)"
+
+[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 0)
+size_flags_stretch_ratio = 1.0
+mouse_filter = 2
+theme = null
+
+[node name="UpgradeImage" parent="MarginContainer/VBoxContainer" index="1"]
+size_flags_vertical = 6
+
+[node name="SelectButton" parent="MarginContainer/VBoxContainer" index="5"]
+unique_name_in_owner = false
+custom_minimum_size = Vector2(0, 64)
+size_flags_horizontal = 1
+size_flags_vertical = 3
+mouse_filter = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]

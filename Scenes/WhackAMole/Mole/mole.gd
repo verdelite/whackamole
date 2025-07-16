@@ -17,6 +17,7 @@ var untargetable: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	UpgradeManager.new_time_dilation.connect(update_mole_speed)
 	update_mole_speed()
 
 
@@ -26,9 +27,9 @@ func _process(delta):
 
 
 func update_mole_speed():
-	animation_tree.set("parameters/Emerge/TimeScale/scale",speed_emerge)
-	animation_tree.set("parameters/Hiding/TimeScale/scale", speed_hide)
-	animation_tree.set("parameters/Waiting/TimeScale/scale", speed_wait)
+	animation_tree.set("parameters/Emerge/TimeScale/scale", speed_emerge * UpgradeManager.TIME_DILATION)
+	animation_tree.set("parameters/Hiding/TimeScale/scale", speed_hide * UpgradeManager.TIME_DILATION)
+	animation_tree.set("parameters/Waiting/TimeScale/scale", speed_wait * UpgradeManager.TIME_DILATION)
 	
 
 #func _on_input_event(viewport, event, shape_idx):

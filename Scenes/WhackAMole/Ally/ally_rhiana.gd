@@ -20,7 +20,7 @@ func _physics_process(delta):
 		return
 	
 	if current_cooldown > 0:
-		current_cooldown -= delta
+		current_cooldown -= (delta * UpgradeManager.TIME_DILATION)
 	
 	else:
 		animation_tree.set("parameters/conditions/active", true)

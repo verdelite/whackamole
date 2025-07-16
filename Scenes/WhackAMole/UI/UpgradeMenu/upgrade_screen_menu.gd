@@ -22,7 +22,7 @@ func _ready():
 	print("Upgrade screen ready and connected!")
 
 func show_menu(new_level: int):
-	print("Signal caught for level: " +str(new_level))
+	#print("Signal caught for level: " +str(new_level))
 	audio_player.stream = audio_open
 	await get_tree().create_timer(0.5).timeout
 	audio_player.play()
@@ -39,7 +39,7 @@ func hide_menu():
 func spawn_upgrades():
 	spawned_upgrades = []
 	update_available_upgrades()
-	await get_tree().create_timer(0.2).timeout
+	#await get_tree().create_timer(0.2).timeout
 	for i in NUM_UPGRADES:
 		var new_upgrade = available_upgrades[i].instantiate()
 		control_node.add_child(new_upgrade)
@@ -50,7 +50,7 @@ func update_available_upgrades():
 
 func show_upgrades():
 	for upgrade in spawned_upgrades:
-		print(str(upgrade))
+		#print(str(upgrade))
 		upgrade.open_upgrade_container()
 		await get_tree().create_timer(0.2).timeout
 		

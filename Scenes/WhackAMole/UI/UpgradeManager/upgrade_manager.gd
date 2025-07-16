@@ -2,6 +2,12 @@ extends Node
 
 var rhiana: Node2D
 
+#var TIME_DILATION_ACTIVE: float = 2 # is 2 if inactive, 1 if active
+var TIME_DILATION_DURATION_MAX: float = 10.0 # duration of time_dilation
+var TIME_DILATION_DURATION_REMAINING: float = 0.0 # remaining duration of time_dilation
+var TIME_DILATION_FACTOR: float = 0.5 # factor of time dilation
+var TIME_DILATION: float = 1.0 # 1.0 if inactive (standard time), else set to TIME_DILATION_FACTOR
+
 var upgrade_rhiana_1: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_1.tscn")
 var upgrade_rhiana_2: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_2.tscn")
 var upgrade_rhiana_3: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_3.tscn")
@@ -27,10 +33,19 @@ var upgrade_tree_rhiana_index: int = 0
 var upgrade_tree_collateral_index: int = 0
 var upgrade_tree_misc_index: int = 0
 
+signal new_time_dilation
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.new_upgrade.connect(_on_upgrade_unlocked)
 	upgrade_tree_rhiana = [ upgrade_rhiana_1, upgrade_rhiana_2, upgrade_rhiana_3, upgrade_rhiana_4 ]
+	
+func _physics_process(delta):
+	if TIME_DILATION_DURATION_REMAINING > 0:
+		TIME_DILATION_DURATION_REMAINING -= delta
+		if TIME_DILATION_DURATION_REMAINING <= 0:
+			TIME_DILATION_DURATION_REMAINING = 0
+			update_time_dilation(1.0)
 	
 func get_upgrades() -> Array[PackedScene]:
 	var alt_upgrades = upgrade_tree_misc.duplicate()
@@ -85,6 +100,9 @@ func _on_upgrade_unlocked(upgrade: Globals.UpgradeType):
 		Globals.UpgradeType.COLLATERAL_3:
 			Globals.COLLATERAL_SCORE_INDEX = 2
 			upgrade_tree_collateral_index = -1
+		Globals.UpgradeType.NALA_1:
+			update_time_dilation(TIME_DILATION_FACTOR)
+			TIME_DILATION_DURATION_REMAINING += TIME_DILATION_DURATION_MAX
 		_:
 			print(str(Globals.UpgradeType)+' not implemented in UpgradeManager yet!')
 			
@@ -93,8 +111,15 @@ func update_array_rhiana(rhiana_upgrade: PackedScene = null):
 	if rhiana_upgrade:
 		upgrade_tree_rhiana.erase(rhiana_upgrade)
 	
-	if upgrade_tree_rhiana.size() > 0:
+	if upgrade_tree_rhiana.has(upgrade_rhiana_1):
+		upgrade_tree_rhiana_index = 0
+	elif upgrade_tree_rhiana.size() > 0:
 		upgrade_tree_rhiana_index = randi_range(0, upgrade_tree_rhiana.size()-1)
-		print('Updated rhiana index with index = ' + str(upgrade_tree_rhiana_index))
+		#print('Updated rhiana index with index = ' + str(upgrade_tree_rhiana_index))
 	else:
 		upgrade_tree_rhiana_index = -1
+
+func update_time_dilation(new_dilation: float):
+	TIME_DILATION = new_dilation
+	new_time_dilation.emit()
+	

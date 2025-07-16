@@ -9,8 +9,5 @@ upgrade_title = "Schnellladen"
 upgrade_flavor = "\"Das hat nur 20 AP gekostet!\""
 upgrade_description = "Rhiana schießt nun alle 3 Sekunden."
 
-[node name="UpgradeName" parent="MarginContainer/VBoxContainer" index="0"]
-autowrap_mode = 0
-
 [node name="SelectButton" parent="MarginContainer/VBoxContainer" index="5"]
 size_flags_vertical = 3

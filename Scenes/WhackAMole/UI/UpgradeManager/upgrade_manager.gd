@@ -2,12 +2,12 @@ extends Node
 
 var rhiana: Node2D
 
-var upgrade_tree_rhiana: Array[PackedScene] =  [
-	preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_1.tscn"),
-	preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_2.tscn"),
-	preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_3.tscn"),
-	preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_4.tscn"),
-	]
+var upgrade_rhiana_1: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_1.tscn")
+var upgrade_rhiana_2: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_2.tscn")
+var upgrade_rhiana_3: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_3.tscn")
+var upgrade_rhiana_4: PackedScene = preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_rhiana_4.tscn")
+
+var upgrade_tree_rhiana: Array[PackedScene] =  []
 
 var upgrade_tree_collateral: Array[PackedScene] = [
 	preload("res://Scenes/WhackAMole/UI/UpgradeContainer/upgrade_container_collateral_1.tscn"),
@@ -30,12 +30,14 @@ var upgrade_tree_misc_index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.new_upgrade.connect(_on_upgrade_unlocked)
+	upgrade_tree_rhiana = [ upgrade_rhiana_1, upgrade_rhiana_2, upgrade_rhiana_3, upgrade_rhiana_4 ]
 	
 func get_upgrades() -> Array[PackedScene]:
 	var alt_upgrades = upgrade_tree_misc.duplicate()
 	var upgrade_a: PackedScene
 	var upgrade_b: PackedScene
 	var upgrade_c: PackedScene
+	
 	if upgrade_tree_rhiana_index >= 0:
 		upgrade_a = upgrade_tree_rhiana[upgrade_tree_rhiana_index]
 	else: 
@@ -56,7 +58,7 @@ func get_upgrades() -> Array[PackedScene]:
 		upgrade_c
 	]
 	
-	print(str(upgrade_tree_rhiana_index))
+	update_array_rhiana()
 	
 	return available_upgrades
 
@@ -64,16 +66,16 @@ func _on_upgrade_unlocked(upgrade: Globals.UpgradeType):
 	match upgrade:
 		Globals.UpgradeType.RHIANA_1:
 			rhiana.active = true
-			update_array_rhiana()
+			update_array_rhiana(upgrade_rhiana_1)
 		Globals.UpgradeType.RHIANA_2:
 			rhiana.valid_targets.erase(Globals.MoleType.STANDARD)
-			update_array_rhiana()
+			update_array_rhiana(upgrade_rhiana_2)
 		Globals.UpgradeType.RHIANA_3:
 			rhiana.ATK_COOLDOWN = rhiana.ATK_COOLDOWN_UPGRADED
-			update_array_rhiana()
+			update_array_rhiana(upgrade_rhiana_3)
 		Globals.UpgradeType.RHIANA_4:
 			rhiana.valid_targets.append(Globals.MoleType.PEASANT)
-			update_array_rhiana()
+			update_array_rhiana(upgrade_rhiana_4)
 		Globals.UpgradeType.COLLATERAL_1:
 			Globals.collateral_combo = 1
 			upgrade_tree_collateral_index = 1
@@ -86,9 +88,13 @@ func _on_upgrade_unlocked(upgrade: Globals.UpgradeType):
 		_:
 			print(str(Globals.UpgradeType)+' not implemented in UpgradeManager yet!')
 			
-func update_array_rhiana():
-	upgrade_tree_rhiana.remove_at(upgrade_tree_rhiana_index)
+func update_array_rhiana(rhiana_upgrade: PackedScene = null):
+	#upgrade_tree_rhiana.remove_at(upgrade_tree_rhiana_index)
+	if rhiana_upgrade:
+		upgrade_tree_rhiana.erase(rhiana_upgrade)
+	
 	if upgrade_tree_rhiana.size() > 0:
 		upgrade_tree_rhiana_index = randi_range(0, upgrade_tree_rhiana.size()-1)
+		print('Updated rhiana index with index = ' + str(upgrade_tree_rhiana_index))
 	else:
 		upgrade_tree_rhiana_index = -1
